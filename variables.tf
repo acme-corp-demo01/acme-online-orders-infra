@@ -1,7 +1,7 @@
 variable "aws_region" {
   description = "AWS region for provisioning"
   type        = string
-  default     = "ap-southeast-2"
+  default     = "ap-southeast-1" # Singapore - ASEAN territory
 }
 
 variable "environment" {
@@ -15,9 +15,14 @@ variable "environment" {
 }
 
 variable "instance_type" {
-  description = "EC2 instance type"
+  description = "EC2 instance type - only t3.micro and t3.small approved for cost control"
   type        = string
   default     = "t3.micro"
+
+  validation {
+    condition     = contains(["t3.micro", "t3.small"], var.instance_type)
+    error_message = "Instance type not approved. Submit a request to the Platform teams for exception."
+  }
 }
 
 variable "cost_center" {
