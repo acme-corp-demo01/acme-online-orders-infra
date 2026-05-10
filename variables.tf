@@ -21,7 +21,7 @@ variable "instance_type" {
 
   validation {
     condition     = contains(["t3.micro", "t3.small"], var.instance_type)
-    error_message = "Instance type not approved. Submit a request to the Platform teams for exception."
+    error_message = "Instance type not approved. Submit a request to the Platform team for exception."
   }
 }
 

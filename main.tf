@@ -5,7 +5,11 @@ terraform {
     organization = "acme-corp-platform"
 
     workspaces {
-      tags = ["workspace-group:acme-online-orders"]
+      project = "online-orders-platform"
+
+      tags = {
+        workspace-group = "acme-online-orders"
+      }
     }
   }
 
